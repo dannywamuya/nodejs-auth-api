@@ -5,8 +5,16 @@ import connectDB from "./utils/connectDb";
 import logger from "./utils/logger";
 import router from "./routes";
 import deserializeUser from "./middleware/deserializeUser";
+import cors from "cors";
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5137",
+  })
+);
+
 app.use(express.json());
 app.use(deserializeUser);
 app.use(router);
